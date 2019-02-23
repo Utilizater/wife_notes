@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div class="wraper">
+    <button id="jealousy">Драма</button>
+    <button id="reproach">Воронина</button>
+    <button id="good_day">Солнце светит</button>
+    <button id="aggression">Молчание ягнят</button>
+    <button id="conflict">Военный экшен</button>
+  </div>
+
+  <script>
+    document.getElementById("jealousy").addEventListener("click", function(){
+      send("jealousy");
+    });
+    document.getElementById("reproach").addEventListener("click", function(){
+      send("reproach");
+    });
+    document.getElementById("good_day").addEventListener("click", function(){
+      send("good_day");
+    });
+    document.getElementById("aggression").addEventListener("click", function(){
+      send("aggression");
+    });
+    document.getElementById("conflict").addEventListener("click", function(){
+      send("conflict");
+    });
+
+    function send(code){
+      var EventCode = code;
+      $.ajax({
+            type: "GET",
+            url: "http://127.0.0.1:3000/static",
+            data: { event: EventCode},
+            success: function(data) {
+                //show content
+                alert('Success!')
+            },
+            error: function(jqXHR, textStatus, err) {
+                //show error message
+                alert('text status '+textStatus+', err '+err)
+            }
+        });
+    }
+  </script>
+  
+
+</body>
+</html>
