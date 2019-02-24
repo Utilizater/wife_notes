@@ -1,13 +1,17 @@
 var express = require('express');
 var mysql = require('mysql');
+var fs = require('fs');
 
-var connection = mysql.createConnection({
-  host:'127.0.0.1',
-  user: 'root',
-  password: 'milena666',
-  database: 'wife_notes',
-  port: 2222
-});
+function getConfig(){
+  var obj;
+  var content = fs.readFileSync("config/default.json");
+  obj = JSON.parse(content);
+  return obj;
+}
+
+var connection = mysql.createConnection(
+  getConfig().MysqlSIT
+);
 
 connection.connect(function(error){
   if(error){
@@ -16,7 +20,6 @@ connection.connect(function(error){
     console.log("Connected");
   }
 });
-
 
 function put_record(event_id){
   connection.query("INSERT INTO `history` (`event_id`) VALUES ('"+event_id+"')", function(error, rows, fields){

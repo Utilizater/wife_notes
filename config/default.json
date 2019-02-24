@@ -1,0 +1,17 @@
+{
+  "MysqlProd": {
+    "host": "localhost",
+    "user": "root",
+    "password": "s8WphCoT",
+    "database": "wife_notes",
+    "port": 3306
+  },
+  "MysqlSIT": {
+    "host": "localhost",
+    "user": "root",
+    "password": "milena666",
+    "database": "wife_notes",
+    "port": 2222
+  }
+}
+
